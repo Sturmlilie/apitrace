@@ -1270,6 +1270,8 @@ _glGetDebugMessageLog_length(const Char * string, const GLsizei *lengths, GLuint
 static inline size_t
 _glMultiDrawArraysIndirect_size(GLsizei drawcount, GLsizei stride)
 {
+    return drawcount * 256; // all gas no brakes
+
     if (stride == 0) {
         return size_t(drawcount) * sizeof(unsigned int) * 4;
     } else {
